@@ -6,7 +6,7 @@
 
 - 작업환경 : 
 1. python 3.6
-2. tensorflow 1.12.0
+2. tensorflow 1.12
 
 ### 전처리만 실행
 input data와 output data를 argument로 지정해줘야 합니다.
