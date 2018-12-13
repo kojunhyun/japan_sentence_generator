@@ -10,6 +10,13 @@
 
 ### 전처리만 실행
 input data와 output data를 argument로 지정해줘야 합니다.
+그러면 output data로 정제된 data가 생성됩니다.
+
 ```
 python japan_corpus_preprocessing.py --input data\sns_text.txt --output data\re_sns_text.txt
 ```
+전처리는 문단으로 input data가 들어가는 것을 문장으로 바꿔주기 위해 사용했습니다.
+
+또한 트위터나 개인 사이트가 input data에 들어갈 때에 성능이 저하되기 때문에 의미없는 데이터를 정제하였습니다.
+(정제가 부족하더라도 이해해주세요... 프로젝트 시간이 얼마 없어서 일본어 corpus 분석을 많이 못했어요...)
+
