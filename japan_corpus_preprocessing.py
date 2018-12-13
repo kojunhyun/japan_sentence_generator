@@ -41,7 +41,7 @@ def japan_paragraph_to_sentence(paragraph):
 def japan_data_refine(lines_input):
     
     refined_data = []
-    #aa = 0
+
     for line in lines_input:
         # NFKC 정규화        
         line = unicodedata.normalize('NFKC', line)
@@ -91,22 +91,18 @@ def japan_data_refine(lines_input):
                 refined_data.append(sentence)
 
     return refined_data
-    
 
 
 def main(input_path, output_path):
     
     with open(input_path, 'r', encoding='utf-8') as r_f:
         lines_input_data = r_f.readlines()
-        
 
     refined_data = japan_data_refine(lines_input_data)
 
     with open(output_path, 'w', encoding='utf-8') as w_f:
         for rd in refined_data:
             w_f.write(rd + '\n')
-    
-    #_tr_va_split(lines)
 
 
 if __name__ == "__main__":
@@ -134,5 +130,3 @@ if __name__ == "__main__":
                 main(args.input[i], args.output[i])
             else:
                 print('%s data is not exist' %d_path)
-
-               
