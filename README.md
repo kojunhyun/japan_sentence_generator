@@ -63,6 +63,21 @@ pre-processing 후 : 짧은 문장으로 추천 문장 return
 
 - 2017.11.20 ~ 2017.11.24
 ### 문장 길이에 따른 성능 비교(니코니코, SNS 비교)
+
+
+|   | 니코니코 코멘트 데이터 학습(sampling)  | SNS 코멘트 데이터 학습 |
+|---|---|---|
+| train data | 105만 line (39.5MB) |   |
+| valid data | 45만 line (18.4MB) |   |
+| Epoch | 13 |   |
+| hidden size | 300 |   |
+| vocab size | 4684 |   |
+| learning rate | 1.0 |   |
+| layers | 2 |   |
+| Train Perplexity | 17.977 |   |
+| Valid Perplexity | 21.759 |   |
+
+
 ##### 니코니코 코멘트 데이터 학습(sampling)
 (1) train data : 105만 line (39.5MB)
 
