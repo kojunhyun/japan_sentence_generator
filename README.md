@@ -37,4 +37,4 @@ pre-processing 후 : 짧은 문장으로 추천 문장 return
 (1) sns 코멘트를 기준으로 생각했을 때, 1개보다는 여러개의 문장을 추천하는 것이 취지에 맞을 것으로 판단
 (2) 확률상 높은 순위 10개를 기준으로 next character 예측
 
-<https://github.com/kojunhyun/japan_sentence_generator/blob/master/fig/10sentence_test.PNG>
+<img src=https://github.com/kojunhyun/japan_sentence_generator/blob/master/fig/10sentence_test.PNG>
