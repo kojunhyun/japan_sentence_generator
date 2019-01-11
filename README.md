@@ -30,7 +30,7 @@ pre-processing 후 : 짧은 문장으로 추천 문장 return
 1개의 추천 문장 → 10개의 추천 문장
 
 
-
+-----------------------------------------------------------------------------------------------------------------------------
 
 - 2017.11.13 ~ 2017.11.17
 ### 문장생성 학습에 사용될 데이터 분석
@@ -57,55 +57,39 @@ pre-processing 후 : 짧은 문장으로 추천 문장 return
 
 (2) 추출한 댓글들(약 9천만 코멘트) 중 150만 코멘트 랜덤 샘플링(sns 코멘트 데이터가 약 150만 문장이라 유사한 조건을 맞추기 위해)
 
-(3) NKFC 정규화 후, 동일한 문자 반복을 2자로 반올림
+(3) NKFC 정규화 후, 동일한 문자 반복을 2자로 반올림("테라와 로스 wwwwww」→ 「테라와 로스 ww")
 
-(4) 문자들을 vocabulary로 사용하고 그 중 상위 5000개의 문자만 사용, 사우이 5000개를 제외한 문자들은 <unk> 처리 (나중에 test 할 때에 vocabulary에 없는 단어가 들어가면 문제가 발생하기 때문에) 
+(4) 광고가 포함된 문장(url, blog, twitter 주소)을 제거
+
+(5) 문자들을 vocabulary로 사용하고 그 중 상위 5000개의 문자만 사용, 상위 4000개를 제외한 문자들은 <unk> 처리 (나중에 test 할 때에 vocabulary에 없는 단어가 들어가면 문제가 발생하기 때문에) 
+
 
 - 2017.11.20 ~ 2017.11.24
 ### 문장 길이에 따른 성능 비교(니코니코, SNS 비교)
 
-
 |   | 니코니코 코멘트 데이터 학습(sampling)  | SNS 코멘트 데이터 학습 |
 |---|---|---|
-| train data | 105만 line (39.5MB) |   |
-| valid data | 45만 line (18.4MB) |   |
-| Epoch | 13 |   |
-| hidden size | 300 |   |
-| vocab size | 4684 |   |
-| learning rate | 1.0 |   |
-| layers | 2 |   |
-| Train Perplexity | 17.977 |   |
-| Valid Perplexity | 21.759 |   |
+| train data | 105만 line (39.5MB) | 105만 line (59.9MB) |
+| valid data | 45만 line (18.4MB) | 약 45만 line (21.4MB) |
+| Epoch | 13 | 13 |
+| hidden size | 300 | 300 |
+| vocab size | 4000 | 4000 |
+| learning rate | 1.0 | 1.0 |
+| layers | 2 | 2 |
+| Train Perplexity | 17.977 | 7.027 |
+| Valid Perplexity | 21.759 | 13.751 |
 
+### 결과 고찰
+(1) 학습 결과로는 SNS 코멘트 데이터가 조금 더 좋은 성능을 보임
+(2) 문장의 길이가 SNS 코멘트 데이터가 더 길어 학습시키는 문자의 양이 더 많기 때문으로 추정
+(3) 또한 SNS 코멘트 데이터는 쇼핑몰과 관련된 코멘트가 주를 이루지만, 니코니코 데이터는 좀 더 다양한 도메인의 코멘트가 많기 때문으로 
 
-##### 니코니코 코멘트 데이터 학습(sampling)
-(1) train data : 105만 line (39.5MB)
-
-(2) valid data : 45만 line (18.4MB)
-
-(3) Epoch : 13
-
-(4) hidden size :  300
-
-(5) vocab size : 4684
-
-(6) learning rate : 1.0
-
-(7) layers : 2
-
-(8) Train Perplexity : 17.977
-
-(9) Valid Perplexity : 21.759
-
-##### SNS 코멘트 데이터 학습
-(1) train data : 105만 line (59.9MB)
-
-(2) valid data : 약 45만 line (21.4MB)
 
 - 2017.11.27 ~ 2017.12.01
 ##### 현재 version 모델에서 입력데이터의 placehold가 없어서 실시간 테스트에서 output를 출력할 수 없는상황
 ##### 입력데이터의 placehold를 추가하고, 실시간 테스트를 위한 output을 출력하기 위해 api 구조 재구축
 ##### 현재 요청사항이 있어 문장생성 api version up 중단 후 api 제공을 위한 작업 중
+
 
 - 2017.12.04 ~ 2017.12.08
 ### 입력데이터의 placehold를 추가하고, 실시간 테스트를 위한 output을 출력하기 위해 api 구조 재구축 
