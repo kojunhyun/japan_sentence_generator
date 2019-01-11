@@ -40,6 +40,7 @@ class TrConfig(object):
     lr_decay = 0.5
     batch_size = 64
     vocab_size = 4000
+    voca_mode = True #  True : 파일 전체의 voca 사용 , False : config.voca_size를 사용
 
 
 def get_config():
@@ -240,13 +241,19 @@ def main(_):
     if not FLAGS.data_path:
         raise ValueError("Must set --data_path to data file path")
     
-    train_data, valid_data, voca_size, char_to_id = reader.corpus_raw_data(FLAGS.data_path, FLAGS.save_path)
+    config = get_config()
+    
+
+    train_data, valid_data, voca_size, char_to_id = reader.corpus_raw_data(config.vocab_size, config.voca_mode, FLAGS.data_path, FLAGS.save_path)
+    
+    #if config.voca_mode:
+    config.vocab_size = voca_size # change, 상위 voca만 사용하는게 아니라 전체를 사용하고 싶을 때
+    
+    print('voca size : ', config.vocab_size)
 
     # output을 역변환
     inverseDictionary = dict(zip(char_to_id.values(), char_to_id.keys()))
-
-    config = get_config()
-    #config.vocab_size = voca_size # change, 상위 voca만 사용하는게 아니라 전체를 사용하고 싶을 때
+    
 
     with tf.Graph().as_default(), tf.Session() as session:
         initializer = tf.random_uniform_initializer(-config.init_scale, config.init_scale)
