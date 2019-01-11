@@ -15,11 +15,19 @@ input data와 output data를 argument로 지정해줘야 합니다.
 ```
 python japan_corpus_preprocessing.py --input data\sns_text.txt --output data\re_sns_text.txt
 ```
+
 전처리는 문단으로 input data가 들어가는 것을 문장으로 바꿔주기 위해 사용했습니다.
 (문단을 문장으로 나누어 input data에 넣기위한 작업)
 
 또한 트위터나 개인 사이트가 input data에 들어갈 때에 성능이 저하되기 때문에 개인정보같은 부분을 정제하였습니다.
 (정제가 부족하더라도 이해해주세요... 프로젝트 시간이 얼마 없어서 일본어 corpus 분석을 많이 못했어요...)
+
+### training
+input data path 와 save path를 지정해줘야 합니다.
+
+```
+python sentence_generator.py --data_path data\re_sns_text.txt --save_path model\
+```
 
 
 
