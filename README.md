@@ -29,6 +29,11 @@ pre-processing 전 : 추천 문자에서 end-of-sentence를 예측을 못하여 
 pre-processing 후 : 짧은 문장으로 추천 문장 return
 1개의 추천 문장 → 10개의 추천 문장
 
+- 2017.11.27 ~ 2017.12.01
+##### 현재 version 모델에서 입력데이터의 placehold가 없어서 실시간 테스트에서 output를 출력할 수 없는상황
+##### 입력데이터의 placehold를 추가하고, 실시간 테스트를 위한 output을 출력하기 위해 api 구조 재구축
+##### 현재 요청사항이 있어 문장생성 api version up 중단 후 api 제공을 위한 작업 중
+
 - 2017.12.04 ~ 2017.12.08
 ### 입력데이터의 placehold를 추가하고, 실시간 테스트를 위한 output을 출력하기 위해 api 구조 재구축 
 ##### tensorflow 1.3 version에서 사용할 수 있게 tensorflow 함수 및 데이터 shape 파악
