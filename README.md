@@ -30,6 +30,9 @@ pre-processing 후 : 짧은 문장으로 추천 문장 return
 1개의 추천 문장 → 10개의 추천 문장
 
 - 2017.12.04 ~ 2017.12.08
-#### 입력데이터의 placehold를 추가하고, 실시간 테스트를 위한 output을 출력하기 위해 api 구조 재구축 
+### 입력데이터의 placehold를 추가하고, 실시간 테스트를 위한 output을 출력하기 위해 api 구조 재구축 
 ##### tensorflow 1.3 version에서 사용할 수 있게 tensorflow 함수 및 데이터 shape 파악
 ##### 기존 input, target data가 class의 private로 정의되어있어 real testing에 문제 발생 (real testing에서는 target이 정의되지 않기 때문)
+##### 기존 문장 1개 생성 → 문장 10개 생성
+(1) sns 코멘트를 기준으로 생각했을 때, 1개보다는 여러개의 문장을 추천하는 것이 취지에 맞을 것으로 판단
+(2) 확률상 높은 순위 10개를 기준으로 next character 예측
