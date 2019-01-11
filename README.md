@@ -6,7 +6,7 @@
 
 - 작업환경 : 
 1. python 3.6
-2. tensorflow 1.12
+2. tensorflow 1.3
 
 ### 전처리만 실행
 input data와 output data를 argument로 지정해줘야 합니다.
@@ -21,3 +21,15 @@ python japan_corpus_preprocessing.py --input data\sns_text.txt --output data\re_
 또한 트위터나 개인 사이트가 input data에 들어갈 때에 성능이 저하되기 때문에 개인정보같은 부분을 정제하였습니다.
 (정제가 부족하더라도 이해해주세요... 프로젝트 시간이 얼마 없어서 일본어 corpus 분석을 많이 못했어요...)
 
+
+
+tensorflow 0.12 version → 1.3 version upgrade
+data pre-processing(text 정제, NFCK 정규화, SNS long-sentence → short sentence 변환) 전, 후 성능비교
+pre-processing 전 : 추천 문자에서 end-of-sentence를 예측을 못하여 문자 무한생성
+pre-processing 후 : 짧은 문장으로 추천 문장 return
+1개의 추천 문장 → 10개의 추천 문장
+
+- 2017.12.04 ~ 2017.12.08
+#### 입력데이터의 placehold를 추가하고, 실시간 테스트를 위한 output을 출력하기 위해 api 구조 재구축 
+##### tensorflow 1.3 version에서 사용할 수 있게 tensorflow 함수 및 데이터 shape 파악
+##### 기존 input, target data가 class의 private로 정의되어있어 real testing에 문제 발생 (real testing에서는 target이 정의되지 않기 때문)
